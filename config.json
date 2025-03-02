@@ -1,0 +1,15 @@
+{
+    "mode": "manual",
+    "powerLimit": 380,
+    "manualLimits": {
+      "0": 380,
+      "1": 370,
+      "2": 360,
+      "3": 350,
+      "4": 340,
+      "5": 330
+    },
+    "startAPIServer": true,
+    "apiKey": "<api-key>",
+    "apiPort": 8080
+  }
