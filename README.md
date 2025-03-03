@@ -39,6 +39,33 @@ sudo cp nvidia_power_control /usr/local/bin/
 sudo nano /etc/systemd/system/nvidia_power_control.service
 ```
 
+### update WorkingDirectory and set the path to your config file
+```
+[Unit]
+Description=NVIDIA Power Control Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/nvidia-power-control
+WorkingDirectory=/etc/nvidia-power-control
+StandardOutput=journal
+StandardError=journal
+Restart=always
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### Reload systemd, enable and start the service
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable nvidia-power-control.service
+sudo systemctl start nvidia-power-control.service
+sudo systemctl status nvidia-power-control.service
+```
+
 ## Check Logs
 ```bash
 journalctl -u nvidia_power_control.service -f
